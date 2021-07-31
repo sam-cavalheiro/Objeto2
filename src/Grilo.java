@@ -1,4 +1,4 @@
-public class Grilo{
+public class Grilo implements Runnable {
     
     private String idGrilo;
     private int tamanhoPulo;
@@ -6,14 +6,16 @@ public class Grilo{
     private int caminhoPercorrido;
     private int contadorTempo = 2;
     private int distanciaChegada;
-    boolean chegada = true;
-  
-    public Grilo(String idGrilo) {
-    	this.idGrilo = idGrilo;
+    boolean chegada = false;
+
+    public Grilo(String id_grilo) {
+    	this.id_grilo = id_grilo;
+    	run();
     }
     
     public void atualiza() 
     { 
+
         this.contadorTempo -=1;
         
         if(contadorTempo <= 0)
@@ -31,4 +33,15 @@ public class Grilo{
                 }
              }
     }
+    	System.out.println("Testando");
+        this.contador_tempo -=1;
+    }
+
+	@Override
+	public void run() {
+		while (!chegada) {
+			atualiza();
+		}
+	}
+
 }
