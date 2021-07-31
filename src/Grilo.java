@@ -4,25 +4,28 @@ public class Grilo implements Runnable {
     private int tamanhoPulo;
     private int totalPulo;
     private int caminhoPercorrido;
-    private int contadorTempo = 2;
+    private int contadorTempo;
     private int distanciaChegada;
     boolean chegada = false;
+    
+    private Thread thread;
 
-    public Grilo(String id_grilo) {
-    	this.id_grilo = id_grilo;
-    	run();
+    public Grilo(String idGrilo) {
+    	this.idGrilo = idGrilo;
+    	thread = new Thread(this, idGrilo);
+    	//run();
     }
     
     public void atualiza() 
     { 
-
+    	System.out.println(idGrilo + ": " + contadorTempo);
         this.contadorTempo -=1;
         
         if(contadorTempo <= 0)
              {
                 totalPulo +=1;
                 caminhoPercorrido = caminhoPercorrido+tamanhoPulo;
-                                System.out.println("Grilo_"+idGrilo+"_pulou_"+tamanhoPulo+"_e_já_percorreu_"+caminhoPercorrido+".");
+                System.out.println("Grilo_"+idGrilo+"_pulou_"+tamanhoPulo+"_e_jï¿½_percorreu_"+caminhoPercorrido+".");
                 if (caminhoPercorrido>=distanciaChegada)
                 {
                     System.out.println("Grilo_"+idGrilo+"chegou_na_linha_de_chegada_com_"+totalPulo+"_pulos.");
@@ -30,11 +33,9 @@ public class Grilo implements Runnable {
                 else
                 {
                 //redefinir contador
+                	
                 }
              }
-    }
-    	System.out.println("Testando");
-        this.contador_tempo -=1;
     }
 
 	@Override
