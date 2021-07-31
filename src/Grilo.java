@@ -7,6 +7,9 @@ public class Grilo{
     private int contador_tempo;
     private int distancia_chegada;
     boolean chegada = true;
+    public Grilo(String id_grilo) {
+    	this.id_grilo = id_grilo;
+    }
     
     public void atualiza() 
     { 
