@@ -1,11 +1,11 @@
 public class Grilo implements Runnable {
     
     private String idGrilo;
-    private int tamanhoPulo;
+    private int tamanhoPulo = 1;
     private int totalPulo;
     private int caminhoPercorrido;
-    private int contadorTempo;
-    private int distanciaChegada;
+    //private int contadorTempo;
+    private int distanciaChegada = 10;
     boolean chegada = false;
     
     private Thread thread;
@@ -13,36 +13,36 @@ public class Grilo implements Runnable {
     public Grilo(String idGrilo) {
     	this.idGrilo = idGrilo;
     	thread = new Thread(this, idGrilo);
-    	//run();
+    	thread.start();
     }
     
-    public void atualiza() 
+    public void pula() 
     { 
-    	System.out.println(idGrilo + ": " + contadorTempo);
-        this.contadorTempo -=1;
-        
-        if(contadorTempo <= 0)
-             {
-                totalPulo +=1;
-                caminhoPercorrido = caminhoPercorrido+tamanhoPulo;
-                System.out.println("Grilo_"+idGrilo+"_pulou_"+tamanhoPulo+"_e_j�_percorreu_"+caminhoPercorrido+".");
-                if (caminhoPercorrido>=distanciaChegada)
-                {
-                    System.out.println("Grilo_"+idGrilo+"chegou_na_linha_de_chegada_com_"+totalPulo+"_pulos.");
-                }
-                else
-                {
-                //redefinir contador
-                	
-                }
-             }
+        totalPulo +=1;
+        caminhoPercorrido = caminhoPercorrido+tamanhoPulo;
+        System.out.println(idGrilo + " pulou " + tamanhoPulo + " e já percorreu " + caminhoPercorrido + ".");
+        if (caminhoPercorrido>=distanciaChegada)
+        {
+            System.out.println(idGrilo + " chegou na linha de chegada com " + totalPulo + " pulos.");
+        }
+        else
+        {
+        	// redefinir contador
+        	System.out.println(idGrilo + " resetou");
+        	thread.run();
+        }
     }
 
 	@Override
 	public void run() {
-		while (!chegada) {
-			atualiza();
+    	try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+    	
+    	pula();
 	}
 
 }
