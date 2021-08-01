@@ -1,10 +1,10 @@
 
 public class Principal {
+	
+	public static final int CHEGADA = 30;
 
 	public static void main(String[] args) {
 		
-		
-		Grilo grilo = new Grilo("Grilo1");
 		
 		int numeroGrilos = 5;
 		while(numeroGrilos > 0) {
