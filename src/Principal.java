@@ -8,7 +8,6 @@ public class Principal {
 		
 		int numeroGrilos = 5;
 		while(numeroGrilos > 0) {
-			System.out.println(numeroGrilos);
 			new Grilo("Grilo_" + numeroGrilos);
 			numeroGrilos --;
 		}
