@@ -8,11 +8,11 @@ public class Grilo implements Runnable {
 	private static final int RESETAR_TEMPO_MAXIMO = 3000;
 	
     private String idGrilo;
-    private int tamanhoPulo;
+    private int tamanhoPulo = 1;
     private int totalPulo;
     private int caminhoPercorrido;
-    private int contadorTempo;
-    private int distanciaChegada;
+    //private int contadorTempo;
+    private int distanciaChegada = 10;
     boolean chegada = false;
     
     private Thread thread;
@@ -21,11 +21,12 @@ public class Grilo implements Runnable {
     	reseta();
     	this.idGrilo = idGrilo;
     	thread = new Thread(this, idGrilo);
-    	//run();
+    	thread.start();
     }
     
-    public void atualiza() 
+    public void pula() 
     { 
+<<<<<<< HEAD
     	System.out.println(idGrilo + ": " + contadorTempo);
         this.contadorTempo -=1;
         
@@ -46,6 +47,21 @@ public class Grilo implements Runnable {
                 	
                 }
              }
+=======
+        totalPulo +=1;
+        caminhoPercorrido = caminhoPercorrido+tamanhoPulo;
+        System.out.println(idGrilo + " pulou " + tamanhoPulo + " e já percorreu " + caminhoPercorrido + ".");
+        if (caminhoPercorrido>=distanciaChegada)
+        {
+            System.out.println(idGrilo + " chegou na linha de chegada com " + totalPulo + " pulos.");
+        }
+        else
+        {
+        	// redefinir contador
+        	System.out.println(idGrilo + " resetou");
+        	thread.run();
+        }
+>>>>>>> 43d194d17442993660871179dea659b1c94c7cc3
     }
     
     private void reseta()
@@ -60,9 +76,14 @@ public class Grilo implements Runnable {
 
 	@Override
 	public void run() {
-		while (!chegada) {
-			atualiza();
+    	try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+    	
+    	pula();
 	}
 
 }
