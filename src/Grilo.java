@@ -30,7 +30,7 @@ public class Grilo implements Runnable {
         System.out.println(nomeGrilo + " pulou " + tamanhoPulo + "cm e já percorreu " + caminhoPercorrido + "cm.");
         if (caminhoPercorrido>=Principal.CHEGADA)
         {
-            System.out.println(nomeGrilo + " chegou na linha de chegada com " + totalPulo + " pulos.");
+            System.out.println(nomeGrilo + " cruzou a linha de chegada com " + totalPulo + " pulos.");
         }
         else
         {
