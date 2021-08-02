@@ -13,7 +13,7 @@ public class Grilo implements Runnable {
     private int caminhoPercorrido;
     //private int contadorTempo;
     //private int Principal.CHEGADA = 10;
-    boolean chegada = false;
+    //boolean chegada = false;
     
     private Thread thread;
 
@@ -27,7 +27,7 @@ public class Grilo implements Runnable {
     { 
         totalPulo +=1;
         caminhoPercorrido = caminhoPercorrido+tamanhoPulo;
-        System.out.println(nomeGrilo + " pulou " + tamanhoPulo + " e já percorreu " + caminhoPercorrido + ".");
+        System.out.println(nomeGrilo + " pulou " + tamanhoPulo + "cm e já percorreu " + caminhoPercorrido + "cm.");
         if (caminhoPercorrido>=Principal.CHEGADA)
         {
             System.out.println(nomeGrilo + " chegou na linha de chegada com " + totalPulo + " pulos.");
